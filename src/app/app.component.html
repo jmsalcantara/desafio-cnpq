@@ -1,0 +1,126 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Funcionários</li>
+  </ol>
+</nav>
+<div class="container">
+  <div class="card list-funcionario">
+    <h5 class="card-header">Lista de funcionários</h5>
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Departamento</th>
+			  <th scope="col">Função</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let funcionario of funcionarios">
+              <td>{{funcionario.nmFuncionario}}</td>
+              <td>{{funcionario.dsDescricao}}</td>
+              <td>{{funcionario.dsDepartamento}}</td>
+			  <td>{{funcionario.dsFuncao}}</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" (click)="atualizarFuncionario(funcionario)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deletarFuncionario(funcionario)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+  <hr>
+  <div class="card add-funcionario">
+      <h5 class="card-header">Adicionar/Atualizar Funcionário</h5>
+      <div class="card-body">
+          <form id="add-form" (ngSubmit)="f.form.valid && gravarFuncionario(f)" #f="ngForm" novalidate>
+		    <div class="row">
+			  <div class="col">
+                <div class="form-group">
+                  <label for="model">Nome</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.nmFuncionario" id="nome" name="nome" #model="ngModel" placeholder="Digite o nome">
+                </div>
+			  </div>
+			</div>
+			<div class="row">
+			  <div class="col">
+                <div class="form-group">
+                  <label for="color">Descrição</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.dsDescricao" id="descricao" name="descricao" #color="ngModel" placeholder="Digite a descrição">                
+                </div>
+		      </div>
+			  <div class="col">
+                <div class="form-group">
+                  <label for="model">CPF</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.nrCpf" id="nrCpf" name="nrCpf" #model="ngModel" placeholder="Digite o CPF">
+                </div>
+			  </div>
+			</div>
+			<div class="row">
+			  <div class="col">
+                <div class="form-group">
+                  <label for="model">CEP</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.nrCep" id="nrCep" name="nrCep" #model="ngModel" placeholder="Digite o CEP">
+                </div>
+			  </div>
+			  <div class="col">
+                <div class="form-group">
+                  <label for="color">Endereço</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.dsEndereco" id="dsEndereco" name="dsEndereco" #color="ngModel" placeholder="Digite o endereço">                
+                </div>
+		      </div>
+			  <div class="col">
+                <div class="form-group">
+                  <label for="color">Cidade</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.dsCidade" id="dsCidade" name="dsCidade" #color="ngModel" placeholder="Digite a cidade">                
+                </div>
+		      </div>
+			</div>
+			<div class="row">			    
+			  <div class="col">
+                <div class="form-group">
+                  <label for="color">Bairro</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.dsBairro" id="dsBairro" name="dsBairro" #color="ngModel" placeholder="Digite o bairro">                
+                </div>
+		      </div>
+			  <div class="col-2">
+                <div class="form-group">
+                  <label for="model">Número</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.nrNumero" id="nrNumero" name="nrNumero" #model="ngModel" placeholder="Digite o número">
+                </div>
+			  </div>
+			  <div class="col">
+                <div class="form-group">
+                  <label for="model">Complemento</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.dsComplemento" id="dsComplemento" name="dsComplemento" #model="ngModel" placeholder="Digite o complemento">
+                </div>
+			  </div>
+			</div>
+			<div class="row">		
+			  <div class="col">
+                <div class="form-group">
+                  <label for="color">Celular</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.nrCelular" id="nrCelular" name="nrCelular" #color="ngModel" placeholder="Digite o celular">                
+                </div>
+		      </div>
+			  <div class="col">
+                <div class="form-group">
+                  <label for="model">Função</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.dsFuncao" id="dsFuncao" name="dsFuncao" #model="ngModel" placeholder="Digite a função">
+                </div>
+			  </div>
+			  <div class="col">
+                <div class="form-group">
+                  <label for="model">Departamento</label>
+                  <input type="text" class="form-control" [(ngModel)]="funcionario.dsDepartamento" id="dsDepartamento" name="dsDepartamento" #model="ngModel" placeholder="Digite o departamento">
+                </div>
+			  </div>
+			</div>		
+            <button type="submit" class="btn btn-primary btn-add-funcionario" (click)="gravarFuncionario(f)">Salvar</button>
+            <button type="reset" class="btn btn-secondary btn-add-funcionario" (click)="cleanForm(f)">Cancelar</button>
+          </form>
+      </div>
+  </div> 
+</div>
